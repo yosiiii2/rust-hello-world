@@ -21,6 +21,10 @@ jobs:
         run: export PATH=tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/:$PATH
       - name: install rustup target
         run: rustup target add arm-unknown-linux-gnueabihf
+      - name: check 01
+        run: echo $PATH
+      - name: check 02
+        run: ls tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/
       - name: Cache cargo registry
         uses: actions/cache@v1
         with:
