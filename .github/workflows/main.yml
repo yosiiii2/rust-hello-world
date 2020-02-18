@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: run-test
-      - run: cargo test
+        run: cargo test
         
   build:
     runs-on: ubuntu-latest
