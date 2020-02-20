@@ -15,8 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: download raspberry/tools
-        run: git clone https://github.com/raspberrypi/tools.git
+      - name: install gcc
+        run: sudo apt install gcc-arm-linux-gnueabi
       - name: install rustup target
         run: rustup target add arm-unknown-linux-gnueabihf
       - name: Cache cargo registry
@@ -35,7 +35,7 @@ jobs:
           path: target
           key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
       - name: build
-        run: export PATH=tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/:$PATH; cargo build --target arm-unknown-linux-gnueabihf --release
+        run: cargo build --target arm-unknown-linux-gnueabihf --release
       - name: upload
         uses: actions/upload-artifact@v1
         with:
