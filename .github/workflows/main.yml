@@ -18,7 +18,7 @@ jobs:
       - name: install gcc
         run: sudo apt install gcc-arm-linux-gnueabi
       - name: install rustup target
-        run: rustup target add arm-unknown-linux-gnueabihf
+        run: rustup target add arm-unknown-linux-gnueabi
       - name: Cache cargo registry
         uses: actions/cache@v1
         with:
@@ -35,9 +35,9 @@ jobs:
           path: target
           key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
       - name: build
-        run: cargo build --target arm-unknown-linux-gnueabihf --release
+        run: cargo build --target arm-unknown-linux-gnueabi --release
       - name: upload
         uses: actions/upload-artifact@v1
         with:
           name: release-build
-          path: target/arm-unknown-linux-gnueabihf/release/hello-world
+          path: target/arm-unknown-linux-gnueabi/release/hello-world
